@@ -5,10 +5,8 @@ exports.createProduct = async (productData) => {
   return await product.save();
 };
 
-// exports.getAllProducts = async () => {
-//   return await Product.find().populate('category').populate('brand').populate('images');
-// };
-exports.getAllProducts = async () => {
+exports.getAllProducts = async (emailExtension) => {
+
   return await Product.find()
     .populate('category')
     .populate('brand')

@@ -19,7 +19,9 @@ exports.loginAdmin = async (req, res) => {
     if (!admin || !await bcrypt.compare(password, admin.password)) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
-    const token = jwt.sign({ id: admin._id, role: 'admin' }, 'nach', { expiresIn: '1d' });
+    //const token = jwt.sign({ id: admin._id, role: 'admin' }, 'nach', { expiresIn: '1d' });
+    const token = jwt.sign({ id: admin._id, role: 'admin', email:email }, 'nach', { expiresIn: '1d' });
+    
     res.status(200).json({ token });
   } catch (err) {
     res.status(500).json({ message: err.message });

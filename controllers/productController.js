@@ -6,6 +6,7 @@ exports.createProduct = async (req, res) => {
       name: req.body.name,
       shortDis: req.body.shortDis,
       category: req.body.category,
+      stock:req.body.stock,
       brand: req.body.brand,
       standardPrice: req.body.standardPrice,
       priceByCompany: req.body.priceByCompany,
@@ -23,7 +24,7 @@ exports.createProduct = async (req, res) => {
 
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await productService.getAllProducts();
+    const products = await productService.getAllProducts(req.emailExtension);
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json({ message: err.message });
